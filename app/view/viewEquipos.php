@@ -8,11 +8,11 @@ class ViewEquipos
         include "templates/header.php";
         foreach ($equipos as $equipo) { ?>
 
-            <div class="col" style="display: flex; justify-content:space-around; flex-direction:row; width: 350px; "  >
+            <div class="col" style="display: flex; justify-content:space-around; flex-direction:row; width: 350px; ">
                 <div class="card" style="width: 30rem; margin-top: 2rem">
                     <div class="card-body">
                         <h5 class="card-title"><?= $equipo->nombre ?></h5>
-                        <img style="width: 330px; " src="<?= $equipo->imagen?>" class="card-img-top" alt="...">
+                        <img style="width: 330px; " src="<?= $equipo->imagen ?>" class="card-img-top" alt="...">
                         <a href="jugadores_equipo/<?= $equipo->id_equipo ?>" class="btn btn-primary">ver jugadores</a>
                         <a href="equipo/<?= $equipo->id_equipo ?>" class="btn btn-danger">ver detalle</a>
                         <a href="borrar/<?= $equipo->id_equipo ?>" class="btn btn-danger">Borrar</a>
@@ -39,7 +39,7 @@ class ViewEquipos
                 <p class="card-text"><?= $equipo->fundacion ?></p>
                 <p class="card-text"><?= $equipo->pais ?></p>
                 <a href="equipos" class="btn btn-primary">Volver</a>
-              
+
             </div>
         </div>
 
@@ -52,10 +52,9 @@ class ViewEquipos
     function showForm($err = null)
     {
         include "templates/header.php";
-        include "templates/footer.php";
     ?>
 
-        <form action="datosForm" method="POST">
+        <form action="datosForm" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label class="form-label">Nombre del equipo</label>
                 <input type="text" class="form-control" name="nombre">
@@ -70,7 +69,7 @@ class ViewEquipos
             </div>
             <div class="mb-3 form-check">
                 <label class="form-label">Imagen/escudo</label>
-                <input type="text" class="form-control" name="imagen">
+                <input type="file" class="form-control" name="imagen">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
@@ -78,6 +77,8 @@ class ViewEquipos
 
 
 <?php
+
+        include "templates/footer.php";
         if ($err) {
         }
     }

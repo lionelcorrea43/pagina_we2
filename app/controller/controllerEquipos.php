@@ -39,14 +39,18 @@ class controllerEquipos
     {
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            if (!empty($_POST['nombre']) && !empty($_POST['pais']) && !empty($_POST['fundacion']) && !empty($_POST['imagen'])) {
+            if (!empty($_POST['nombre']) && !empty($_POST['pais']) && !empty($_POST['fundacion'])) {
                 $nombre = $_POST['nombre'];
                 $pais = $_POST['pais'];
                 $fundacion = $_POST['fundacion'];
-                $imagen = $_POST['imagen'];
-
-
-                $this->model->save($nombre, $fundacion, $pais, $imagen);
+                $nombrefinalImg = null;
+                if (!empty($_FILES['imagen']['name'])) {
+                    $img = $_FILES['imagen']['name'];
+                    $archivoTemporal = $_FILES['imagen']['tmp_name'];
+                    $nombrefinalImg = "imagenes/" . uniqid("", true) . "." . strtolower(pathinfo($img, PATHINFO_EXTENSION));
+                    move_uploaded_file($archivoTemporal, $nombrefinalImg);
+                }
+                $this->model->save($nombre, $fundacion, $pais, $nombrefinalImg);
                 header("Location:" . BASE_URL . "/equipos");
             } else {
                 $this->view->showForm("Faltan datos obligatorios");
