@@ -17,7 +17,7 @@ class Model
         $host = 'localhost';
         $userName = 'root';
         $password = '';
-        $database = 'equipo_jugadores';
+        $database = 'futbol';
         try {
             $this->pdo = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $userName, $password);
         } catch (Exception  $e) {
