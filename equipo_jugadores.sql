@@ -102,7 +102,7 @@ INSERT INTO `jugador` (`id_jugador`, `id_equipo`, `fecha_nacimieto`, `nombre`, `
 (32, 5, '1992-01-17', 'Ezequiel', 'Cerutti', 400000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773566857.jpg'),
 (33, 5, '2000-02-18', 'Alexis', 'Cuello', 550000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773566979.jpg'),
 (34, 5, '1997-10-23', 'Matías', 'Reali', 500000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773567081.jpg');
-
+(35, 1, '1986-06-24', 'Lionel ', 'Messi', '120000', 'Toda la cancha', 'https://i.pinimg.com/1200x/ce/6b/b7/ce6bb7b6fe0276e2ce3450b101ce5530.jpg');
 --
 -- Índices para tablas volcadas
 --

@@ -38,7 +38,7 @@ class ViewEquipos
                 <img src="<?= $equipo->imagen ?>" class="card-img-top" alt="...">
                 <p class="card-text"><?= $equipo->fundacion ?></p>
                 <p class="card-text"><?= $equipo->pais ?></p>
-                <a href="equipos" class="btn btn-primary">Go somewhere</a>
+                <a href="equipos" class="btn btn-primary">Volver</a>
               
             </div>
         </div>
