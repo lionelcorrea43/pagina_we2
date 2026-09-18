@@ -1,0 +1,67 @@
+.conteiner {
+    display: flex;
+    width: 85%;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 6rem;
+    
+}
+.card-equipo{
+   display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-color: 0px white;
+}
+
+.equipos {
+    width: 350px;
+    margin: 30px;
+    border-color: 0px;
+    cursor: pointer;
+
+    filter: grayscale(100%);
+    transition: all 0.4s ease;
+
+}
+
+.equipos:hover {
+    transform: translateY(-8px);
+
+    filter: grayscale(0);
+
+}
+/* Estilos para la animación del Hover */
+.nav-link-animated {
+    position: relative;
+    padding-bottom: 6px; /* Espacio para que la línea no toque la letra */
+    transition: color 0.3s ease;
+}
+
+/* Creamos la línea invisible abajo del enlace */
+.nav-link-animated::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0); /* Empieza con tamaño cero (oculta) */
+    height: 3px;          /* Grosor de la barra inferior */
+    bottom: 0;
+    left: 0;
+    background-color: #ffc107; /* El color amarillo 'warning' de Bootstrap */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out; /* Velocidad y suavidad de la animación */
+}
+
+/* Animación: Cuando pasas el mouse por encima */
+.nav-link-animated:hover::after {
+    transform: scaleX(1); /* La línea se expande al 100% */
+    transform-origin: bottom left;
+}
+
+/* Mantener la línea fija si el enlace está "active" (Página actual) */
+.nav-link-animated.active::after {
+    transform: scaleX(1);
+}
+
+
+

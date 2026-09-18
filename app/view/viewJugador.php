@@ -19,6 +19,7 @@ class viewJugador
                         <h5 class="card-title"><?= $jugador->posicion ?></h5>
                         <img style="width: 330px; " src="<?= $jugador->IMAGEN ?>" class="card-img-top" alt="...">
                         <a href="equipo/<?= $jugador->id_equipo ?>" class="btn btn-primary">Ver club</a>
+                        <a href="equipos" class="btn btn-primary">Volver</a>
 
                     </div>
                 </div>
