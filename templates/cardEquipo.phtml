@@ -1,0 +1,24 @@
+<?php
+    
+include "templates/header.php";
+
+    ?>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title"><?= $equipo->nombre ?></h5>
+                <img src="<?= $equipo->imagen ?>" class="card-img-top" alt="...">
+                <p class="card-text"><?= $equipo->fundacion ?></p>
+                <p class="card-text"><?= $equipo->pais ?></p>
+                <a href="equipos" class="btn btn-primary">Volver</a>
+                <a href="jugadores_equipo/<?= $equipo->id_equipo ?>" class="btn btn-danger">ver jugadores</a>
+                <a href="borrar/<?= $equipo->id_equipo ?>" class="btn btn-danger">Borrar</a>
+
+            </div>
+        </div>
+
+    <?php
+        include "templates/footer.php";
+
+
+
+?>
