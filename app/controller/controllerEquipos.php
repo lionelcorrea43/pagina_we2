@@ -49,10 +49,9 @@ class controllerEquipos
                     //creamos un archivo temporal
                     $archivoTemporal = $_FILES['imagen']['tmp_name'];
 
-                    $nombreFinalImg="imagen/".uniqid("", true). ".". strtolower(pathinfo($imagen, PATHINFO_EXTENSION));
+                    $nombreFinalImg = "imagen/" . uniqid("", true) . "." . strtolower(pathinfo($imagen, PATHINFO_EXTENSION));
 
                     move_uploaded_file($archivoTemporal, $nombreFinalImg);
-
                 }
 
 

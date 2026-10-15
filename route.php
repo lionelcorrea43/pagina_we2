@@ -2,9 +2,11 @@
 
 require_once('app/controller/controllerEquipos.php');
 require_once('app/controller/controllerJugador.php');
+require_once('app/controller/controllerUsuarios.php');
 
 $controllerEquip = new controllerEquipos();
 $controllerJuga = new controllerJugador();
+$controllerUsu = new controllerUsuarios();
 
 
 
@@ -23,6 +25,12 @@ switch ($parametros[0]) {
     case 'equipos':
         $controllerEquip->getEquipos();
         break;
+    case 'login':
+        $controllerUsu->mostrarLogin();
+        break;
+    case 'registro':
+        $controllerUsu->mostrarRegistro();
+        break;
     case 'equipo':
         $controllerEquip->getEquipoById($parametros[1]);
         break;
@@ -37,4 +45,7 @@ switch ($parametros[0]) {
         break;
         case 'datosForm': $controllerEquip->obtenerDatos() ; break;
         case 'borrar': $controllerEquip->eliminarEquipo($parametros[1]) ; break;
+        case 'datosRegistro': $controllerUsu->obtenerDatorRegistro(); break;
+        case 'datosLogin': $controllerUsu->obtenerDatorLogin() ; break;
+
 }
