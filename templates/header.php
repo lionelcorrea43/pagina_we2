@@ -50,6 +50,16 @@
             Agregar Equipo
           </a>
         </li>
+        <li class="nav-item ms-lg-4 mt-2 mt-lg-0">
+          <a class="btn btn-warning btn-sm px-4 fw-bold text-dark rounded-pill shadow-sm" href="registro">
+            Registro
+          </a>
+        </li>
+        <li class="nav-item ms-lg-4 mt-2 mt-lg-0">
+          <a class="btn btn-warning btn-sm px-4 fw-bold text-dark rounded-pill shadow-sm" href="login">
+            Login
+          </a>
+        </li>
       </ul>
     </div>
   </div>

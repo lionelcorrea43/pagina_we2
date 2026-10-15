@@ -64,4 +64,15 @@
 }
 
 
+.custom-card-hover {
+    /* Agrega el borde inicial transparente para evitar saltos visuales al activarse */
+    border: 2px solid transparent !important; 
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.custom-card-hover:hover {
+    transform: translateY(-4px); /* Eleva la tarjeta */
+    border-color: #ffc107 !important; /* El borde cambia al amarillo/dorado de tus botones */
+}
+
 

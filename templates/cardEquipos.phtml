@@ -1,0 +1,21 @@
+<<?php
+    
+
+include "templates/header.php";
+        foreach ($equipos as $equipo) { ?>
+            <a href="jugadores_equipo/<?= $equipo->id_equipo ?>">
+                <div class="equipos">
+                    <div class="card-equipo">
+                        <img style="width: 330px; " src="<?= $equipo->imagen ?>" class="card-img-top" alt="...">
+                    </div>
+                </div>
+            </a>
+        <?php
+        }
+        ?>
+    <?php
+        include "templates/footer.php";
+
+        
+        ?>
+
