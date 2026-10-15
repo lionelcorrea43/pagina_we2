@@ -69,7 +69,8 @@ class ViewEquipos
         <!-- Cuerpo del formulario -->
         <div class="card-body p-4">
           <form action="datosForm" method="POST" enctype="multipart/form-data">
-            
+
+          
             <!-- Campo: Nombre -->
             <div class="mb-4">
               <label class="form-label fw-semibold text-warning small">Nombre del equipo</label>
