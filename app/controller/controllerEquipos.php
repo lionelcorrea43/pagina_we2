@@ -18,8 +18,11 @@ class controllerEquipos
 
     function getEquipos()
     {
+         if(Helpers::barreraSeguridad()){
         $equipos = $this->model->all();
         $this->view->showEquipos($equipos);
+        
+        }
     }
     function getEquipoById($id)
     {
@@ -30,8 +33,10 @@ class controllerEquipos
 
     function mostrarFormulario()
     {
-
+         if(Helpers::barreraSeguridad()){
         $this->view->showForm();
+        
+        }
     }
 
 

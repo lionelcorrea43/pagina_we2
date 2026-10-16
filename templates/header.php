@@ -26,6 +26,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    
     <!-- Contenedor de los enlaces -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
@@ -42,6 +43,10 @@
         <li class="nav-item px-3">
           <a class="nav-link nav-link-animated" href="jugadores">
             Jugadores
+          </a>
+        <li class="nav-item px-3">
+          <a class="nav-link nav-link-animated" href="logout">
+            Cerrar sesion
           </a>
         </li>
         <!-- Botón de acción destacado -->
@@ -60,9 +65,10 @@
             Login
           </a>
         </li>
+       
       </ul>
     </div>
   </div>
 </nav>
-    <div class="conteiner">
+    <div class="conteiner" >
 
