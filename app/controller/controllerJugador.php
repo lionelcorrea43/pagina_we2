@@ -17,10 +17,10 @@ class controllerJugador
 
     function mostrarFormularioJugador()
     {
-
+    if (Helpers::barreraSeguridad()) {
         $this->view->showFormJugador();
     }
-
+    }
     function obtenerDatosJugador()
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
