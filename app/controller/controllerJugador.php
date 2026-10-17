@@ -55,15 +55,17 @@ class controllerJugador
 
     function getJugadores()
     {
-        $jugadores = $this->model->all();
-        $this->view->showJugadores($jugadores);
-    }
+        if (Helpers::barreraSeguridad()) {
+            $jugadores = $this->model->all();
+            $this->view->showJugadores($jugadores);
+        } }
 
     function showJugadoresByEquipo($equipo)
     {
-
+    if (Helpers::barreraSeguridad()) {
         $jugadores = $this->model->findJugadorByEquipo($equipo); //trae todos los jugadores q tengan el mismo id, ejemplo id =1 trae a 5 jugadores
         $this->view->showJugadores($jugadores);
+    }
     }
     function eliminarJugador($id)
     {

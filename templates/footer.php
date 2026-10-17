@@ -1,6 +1,6 @@
 </div>
 
-<footer class="bg-dark text-light pt-4 pb-3 mt-5 border-top border-secondary shadow-lg">
+<footer class="bg-dark text-light pt-4 pb-3 mt-5 border-top border-secondary shadow-lg" st>
   <div class="container text-center text-md-start">
     <div class="row align-items-center justify-content-between">
       

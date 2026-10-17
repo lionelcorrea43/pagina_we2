@@ -1,29 +1,25 @@
 <?php
-
-class modelUsuarios
+require_once('app/model/model.php');
+class modelUsuarios extends Model
 {
 
 
-    function registro($userEmail, $userPassword, $role)
+    function registro($userEmail, $userPassword)
     {
         //Guardo el nuevo usuario en la base de datos
-        $db = new PDO('mysql:host=localhost;' . 'dbname=equipo_jugadores;charset=utf8', 'root', '');
-        $query = $db->prepare('INSERT INTO usuarios (email, password, role) VALUES (? , ?, ?)');
-        $query->execute([$userEmail, $userPassword, $role]);
+        $db = $this->getPDO();
+        $query = $db->prepare('INSERT INTO usuarios (email, password) VALUES (? , ?)');
+        $query->execute([$userEmail, $userPassword]);
     }
 
-    function login($userEmail, $userPassword)
-    {
-        $db = new PDO('mysql:host=localhost;' . 'dbname=equipo_jugadores;charset=utf8', 'root', '');
-        $query = $db->prepare('SELECT * FROM usuarios WHERE email = ?');
-        $query->execute([$userEmail]);
-        $user = $query->fetch(PDO::FETCH_OBJ);
 
-        //Si el usuario existe y las contraseñas coinciden
-        if ($user && password_verify($userPassword, $user->password)) {
-            return true; // 🔥 Retornamos éxito al controlador
-        } else {
-            return false; // 🔥 Retornamos fallo al controlador
-        }
+    function existeUsuario($usuario)
+    {
+        $db =$this->getPDO();
+        $sentencia = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $sentencia->execute([$usuario]); // Ejecutamos la consulta
+
+        $usuario = $sentencia->fetch(PDO::FETCH_OBJ); // Obtenemos los datos (para generar el HTML)
+        return $usuario;
     }
 }

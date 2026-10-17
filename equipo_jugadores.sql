@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-09-2026 a las 01:55:41
+-- Tiempo de generación: 16-10-2026 a las 02:45:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -44,7 +44,9 @@ INSERT INTO `equipo` (`id_equipo`, `nombre`, `fundacion`, `pais`, `imagen`) VALU
 (2, 'Club Atlético River Plate', '1901-05-25', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/river-plate.1ac01d84.png'),
 (3, 'Club Atlético Independiente', '1905-01-01', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/independiente.fe207eca.png'),
 (4, 'Racing Club', '1903-03-25', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/racing-club.2e7a0fc0.png'),
-(5, 'Club Atlético San Lorenzo de Almagro', '1908-04-01', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/san-lorenzo-de-almagro.a0e4e931.png');
+(5, 'Club Atlético San Lorenzo de Almagro', '1908-04-01', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/san-lorenzo-de-almagro.a0e4e931.png'),
+(7, 'Club Atletico Estudiantes De La Plata', '1905-08-04', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/700x700/estudiantes-de-la-plata.5e953e40.png'),
+(8, 'lionel', '1905-08-04', 'Argentina', 'imagen/6ad0060c9a3565.79440501.png');
 
 -- --------------------------------------------------------
 
@@ -102,7 +104,27 @@ INSERT INTO `jugador` (`id_jugador`, `id_equipo`, `fecha_nacimieto`, `nombre`, `
 (32, 5, '1992-01-17', 'Ezequiel', 'Cerutti', 400000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773566857.jpg'),
 (33, 5, '2000-02-18', 'Alexis', 'Cuello', 550000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773566979.jpg'),
 (34, 5, '1997-10-23', 'Matías', 'Reali', 500000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773567081.jpg');
-(35, 1, '1986-06-24', 'Lionel ', 'Messi', '120000', 'Toda la cancha', 'https://i.pinimg.com/1200x/ce/6b/b7/ce6bb7b6fe0276e2ce3450b101ce5530.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` varchar(20) NOT NULL DEFAULT 'usuario'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `email`, `password`, `role`) VALUES
+(1, 'webadmin', '$2y$10$FMZNMhItak6YkaoyBP/x5e7XQlT5Aeep8MXc4/ylXar5BvCeTVTI.', 'administrador');
+
 --
 -- Índices para tablas volcadas
 --
@@ -121,6 +143,12 @@ ALTER TABLE `jugador`
   ADD KEY `FK_JUGADOR_EQUIPO` (`id_equipo`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -128,13 +156,19 @@ ALTER TABLE `jugador`
 -- AUTO_INCREMENT de la tabla `equipo`
 --
 ALTER TABLE `equipo`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `jugador`
 --
 ALTER TABLE `jugador`
   MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas

@@ -74,5 +74,7 @@
     transform: translateY(-4px); /* Eleva la tarjeta */
     border-color: #ffc107 !important; /* El borde cambia al amarillo/dorado de tus botones */
 }
-
+footer{
+    margin-bottom:1000px;
+}
 
