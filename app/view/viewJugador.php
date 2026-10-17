@@ -10,6 +10,9 @@ class viewJugador
 
         include "templates/cardJugadores.phtml";
     }
-
+    function showFormJugador($err = null)
+    {
+        include "templates/formJugador.phtml";
+    }
 
 }

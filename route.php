@@ -9,7 +9,6 @@ $controllerJuga = new controllerJugador();
 $controllerUsu = new controllerUsuarios();
 
 
-
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
 
@@ -35,17 +34,33 @@ switch ($parametros[0]) {
         $controllerEquip->getEquipoById($parametros[1]);
         break;
     case 'form_equipo':
-        $controllerEquip->mostrarFormulario();
+        $controllerEquip->mostrarFormularioEquipo();
+        break;
+    case 'formJugador':
+        $controllerJuga->mostrarFormularioJugador();
         break;
     case 'jugadores':
         $controllerJuga->getJugadores();
         break;
     case 'jugadores_equipo':
-        $controllerJuga->getJugadorByEquipo($parametros[1]);
+        $controllerJuga->showJugadoresByEquipo($parametros[1]);
         break;
-        case 'datosForm': $controllerEquip->obtenerDatos() ; break;
-        case 'borrar': $controllerEquip->eliminarEquipo($parametros[1]) ; break;
-        case 'datosRegistro': $controllerUsu->obtenerDatorRegistro(); break;
-        case 'datosLogin': $controllerUsu->obtenerDatorLogin() ; break;
-
+    case 'datosFormJugador':
+        $controllerJuga->obtenerDatosJugador();
+        break;
+    case 'datosFormEquipo':
+        $controllerEquip->obtenerDatosEquipo();
+        break;
+    case 'borrarEquipo':
+        $controllerEquip->eliminarEquipo($parametros[1]);
+        break;
+    case 'borrarJugador':
+        $controllerJuga->eliminarJugador($parametros[1]);
+        break;
+    case 'datosRegistro':
+        $controllerUsu->obtenerDatorRegistro();
+        break;
+    case 'datosLogin':
+        $controllerUsu->obtenerDatorLogin();
+        break;
 }

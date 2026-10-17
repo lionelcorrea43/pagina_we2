@@ -11,7 +11,6 @@ class viewUsuarios
         <form method="POST" action="datosRegistro">
             <input type="text" name="email" placeholder="Ingrese su email..." />
             <input type="password" name="password" placeholder="Ingrese su password..." />
-
             <button type="submit">Crear cuenta</button>
         </form>
     <?php

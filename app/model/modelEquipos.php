@@ -13,10 +13,7 @@ function all(){
 
 }
 
-
-
-
- function findById($id)
+ function findEquipoById($id)
     {
         $db = $this->getPDO(); // Abrimos  una conexión
 
@@ -27,19 +24,22 @@ function all(){
         return $equipo;
     }
 
-    function save($nombre, $fundacion, $pais, $imagen)
+    function saveEquipo($nombre, $fundacion, $pais, $imagen)
     {
         $db = $this->getPDO();
         $sentencia = $db->prepare("INSERT INTO equipo (nombre, fundacion, pais, imagen) VALUES (?,?,?,?)");
         $sentencia->execute([$nombre, $fundacion, $pais, $imagen]);
     }
 
-    function delete($id)
+    function deleteEquipo($id)
     {
         $db = $this->getPDO();
         $sentencia = $db->prepare("DELETE FROM equipo WHERE id_equipo = ?");
         $sentencia->execute([$id]);
     }
+
+    
+
 
 
 

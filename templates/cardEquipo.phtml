@@ -1,7 +1,6 @@
 <?php
     
 include "templates/header.php";
-
     ?>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -11,14 +10,10 @@ include "templates/header.php";
                 <p class="card-text"><?= $equipo->pais ?></p>
                 <a href="equipos" class="btn btn-primary">Volver</a>
                 <a href="jugadores_equipo/<?= $equipo->id_equipo ?>" class="btn btn-danger">ver jugadores</a>
-                <a href="borrar/<?= $equipo->id_equipo ?>" class="btn btn-danger">Borrar</a>
-
+                <a href="equipos" class="btn btn-primary">Agregar jugador</a>
+                <a href="borrarEquipo/<?= $equipo->id_equipo ?>" class="btn btn-danger">Borrar</a>
             </div>
         </div>
-
     <?php
         include "templates/footer.php";
-
-
-
 ?>

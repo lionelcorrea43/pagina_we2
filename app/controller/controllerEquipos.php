@@ -24,18 +24,18 @@ class controllerEquipos
     function getEquipoById($id)
     {
 
-        $equipo = $this->model->findById($id);
+        $equipo = $this->model->findEquipoById($id);
         $this->view->showEquipo($equipo);
     }
 
-    function mostrarFormulario()
+    function mostrarFormularioEquipo()
     {
 
-        $this->view->showForm();
+        $this->view->showFormEquipo();
     }
 
 
-    function obtenerDatos()
+    function obtenerDatosEquipo()
     {
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -56,10 +56,10 @@ class controllerEquipos
 
 
 
-                $this->model->save($nombre, $fundacion, $pais, $nombreFinalImg);
-                header("Location:" . BASE_URL . "/equipos");
+                $this->model->saveEquipo($nombre, $fundacion, $pais, $nombreFinalImg);
+                header("Location:" . BASE_URL . "equipos");
             } else {
-                $this->view->showForm("Faltan datos obligatorios");
+                $this->view->showFormEquipo("Faltan datos obligatorios");
             }
         }
     }
@@ -67,7 +67,7 @@ class controllerEquipos
 
     function eliminarEquipo($id)
     {
-        $this->model->delete($id);
-        header("Location:" . BASE_URL . "/equipos");
+        $this->model->deleteEquipo($id);
+        header("Location:" . BASE_URL . "equipos");
     }
 }

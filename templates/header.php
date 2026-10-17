@@ -22,7 +22,7 @@
     </a>
 
     <!-- Botón para pantallas móviles -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" dat    a-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -42,6 +42,13 @@
         <li class="nav-item px-3">
           <a class="nav-link nav-link-animated" href="jugadores">
             Jugadores
+          </a>
+        </li>
+        
+        <!-- Botón de acción destacado -->
+        <li class="nav-item ms-lg-4 mt-2 mt-lg-0">
+          <a class="btn btn-warning btn-sm px-4 fw-bold text-dark rounded-pill shadow-sm" href="formJugador">
+            Agregar Jugador
           </a>
         </li>
         <!-- Botón de acción destacado -->
