@@ -17,16 +17,16 @@ class controllerJugador
 
     function mostrarFormularioJugador()
     {
-    if (Helpers::barreraSeguridad()) {
-        $this->view->showFormJugador();
-    }
+        if (Helpers::barreraSeguridad()) {
+            $this->view->showFormJugador();
+        }
     }
     function obtenerDatosJugador()
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (!empty($_POST['id_equipo']) && !empty($_POST['fecha_nacimiento']) && !empty($_POST['nombre']) && !empty($_POST['apellido']) && !empty($_POST['sueldo'])) {
-                $posicion = $_POST['posicion'];    
-            $fecha_nacimiento = $_POST['fecha_nacimiento'];
+                $posicion = $_POST['posicion'];
+                $fecha_nacimiento = $_POST['fecha_nacimiento'];
                 $nombre = $_POST['nombre'];
                 $apellido = $_POST['apellido'];
                 $sueldo = $_POST['sueldo'];
@@ -58,18 +58,25 @@ class controllerJugador
         if (Helpers::barreraSeguridad()) {
             $jugadores = $this->model->all();
             $this->view->showJugadores($jugadores);
-        } }
+        }
+    }
 
     function showJugadoresByEquipo($equipo)
     {
-    if (Helpers::barreraSeguridad()) {
-        $jugadores = $this->model->findJugadorByEquipo($equipo); //trae todos los jugadores q tengan el mismo id, ejemplo id =1 trae a 5 jugadores
-        $this->view->showJugadores($jugadores);
-    }
+        if (Helpers::barreraSeguridad()) {
+            $jugadores = $this->model->findJugadorByEquipo($equipo); //trae todos los jugadores q tengan el mismo id, ejemplo id =1 trae a 5 jugadores
+            $this->view->showJugadores($jugadores);
+        }
     }
     function eliminarJugador($id)
     {
+        $jugador = $this->model->getEquipoByJugador($id);
+        $jugador = $jugador[0]->id_equipo; //traigo el id del equipo al que pertenece el jugador
+        if ($jugador) {
         $this->model->deleteJugador($id);
-        header("Location:" . BASE_URL . "equipos");
+            header("Location:" . BASE_URL . "equipo/" . $jugador);
+        } else {
+            header("Location:" . BASE_URL . "equipos");
+        }
     }
 }

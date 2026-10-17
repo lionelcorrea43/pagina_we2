@@ -51,6 +51,9 @@
         </li>
         
         <!-- Botón de acción destacado -->
+<?php
+        if (Helpers::esAdmin()) {
+        ?>
         <li class="nav-item ms-lg-4 mt-2 mt-lg-0">
           <a class="btn btn-warning btn-sm px-4 fw-bold text-dark rounded-pill shadow-sm" href="formJugador">
             Agregar Jugador
@@ -62,6 +65,8 @@
             Agregar Equipo
           </a>
         </li>
+          <?php } ?>
+
         <li class="nav-item ms-lg-4 mt-2 mt-lg-0">
           <a class="btn btn-warning btn-sm px-4 fw-bold text-dark rounded-pill shadow-sm" href="registro">
             Registro

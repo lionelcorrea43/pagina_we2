@@ -12,9 +12,16 @@ class modelJugadores extends Model{
 
     $jugadores = $sentencia->fetchAll(PDO::FETCH_OBJ); // Obtenemos los datos (para generar el HTML)
         return $jugadores;
-
 }
 
+    function getEquipoByJugador($id){
+    $bdd = $this->getPDO(); // Abrimos  una conexion
+    $sentencia = $bdd->prepare("SELECT id_equipo FROM jugador where id_jugador = ?");
+    $sentencia->execute([$id]);
+
+    $jugadores = $sentencia->fetchAll(PDO::FETCH_OBJ); // Obtenemos los datos (para generar el HTML)
+        return $jugadores;
+}
     function saveJugador( $equipo, $fecha_nacimiento, $nombre, $apellido, $sueldo, $posicion, $imagen)
     {
         $db = $this->getPDO();
@@ -31,13 +38,14 @@ class modelJugadores extends Model{
 
         $jugador = $sentencia->fetchAll(PDO::FETCH_OBJ); // uso fetch all para traer todos los jugadores con el mismo id sino traeria solo el primero
         return $jugador;
-    
     }
     
     function deleteJugador($id)
     {
+
         $db = $this->getPDO();
         $sentencia = $db->prepare("DELETE FROM jugador WHERE id_jugador = ?");
         $sentencia->execute([$id]);
+        
     }
 }

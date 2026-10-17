@@ -26,7 +26,6 @@ class controllerEquipos
     }
     function getEquipoById($id)
     {
-
         $equipo = $this->model->findEquipoById($id);
         $this->view->showEquipo($equipo);
     }
