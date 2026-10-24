@@ -1,29 +1,33 @@
 <?php
 include "templates/header.php";
-foreach ($jugadores as $jugador) { ?>
-
-    <div class="col" style="display: flex; justify-content:space-around; flex-direction:row; width: 350px; ">
-        <div class="card" style="width: 30rem; margin-top: 2rem">
-            <div class="card-body">
-                <h5 class="card-title"><?= $jugador->nombre ?> <?= $jugador->apellido ?></h5>
-                <h5 class="card-title"><?= $jugador->fecha_nacimiento ?></h5>
-                <h5 class="card-title"><?= $jugador->posicion ?></h5>
-                <img style="width: 330px; " src="<?= $jugador->IMAGEN ?>" class="card-img-top" alt="...">
-                <a href="equipo/<?= $jugador->id_equipo ?>" class="btn btn-primary">Ver club</a>
-                <?php
-                if (Helpers::esAdmin()) {
-                ?>
-                    <a href="borrarJugador/<?= $jugador->id_jugador ?>" class="btn btn-danger">Borrar</a>
-                <?php
-
-                }
-                ?> <a href="equipos" class="btn btn-primary">Volver</a>
-            </div>
-        </div>
-    </div>
-<?php
-}
 ?>
+
+<main class="jugadores-page">
+    <div class="jugadores-grid">
+        <?php foreach ($jugadores as $jugador) { ?>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= htmlspecialchars($jugador->nombre) ?> <?= htmlspecialchars($jugador->apellido) ?></h5>
+                        <div class="jugador-meta">
+                            <span class="jugador-pill"><i class="bi bi-calendar-event"></i> <?= htmlspecialchars($jugador->fecha_nacimiento) ?></span>
+                            <span class="jugador-pill"><i class="bi bi-diagram-3"></i> <?= htmlspecialchars($jugador->posicion) ?></span>
+                        </div>
+                        <img src="<?= $jugador->IMAGEN ?>" class="card-img-top" alt="Foto de <?= htmlspecialchars($jugador->nombre) ?>">
+                        <div class="card-actions">
+                            <a href="equipo/<?= $jugador->id_equipo ?>" class="btn btn-primary"><i class="bi bi-shield-shaded"></i> Ver club</a>
+                            <?php if (Helpers::esAdmin()) { ?>
+                                <a href="borrarJugador/<?= $jugador->id_jugador ?>" class="btn btn-danger" onclick="return confirm('¿Seguro que querés borrar este jugador?');"><i class="bi bi-trash3"></i> Borrar</a>
+                            <?php } ?>
+                            <a href="equipos" class="btn btn-ghost"><i class="bi bi-arrow-left"></i> Volver</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+</main>
+
 <?php
 include "templates/footer.php";
 ?>

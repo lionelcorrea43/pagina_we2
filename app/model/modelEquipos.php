@@ -1,19 +1,20 @@
 <?php
 require_once('app/model/model.php');
 
-class modelEquipos extends Model{
+class modelEquipos extends Model
+{
 
-function all(){
-    $bdd = $this->getPDO(); // Abrimos  una conexion
-    $sentencia = $bdd->prepare("SELECT * FROM equipo");
-    $sentencia->execute();
+    function all()
+    {
+        $bdd = $this->getPDO(); // Abrimos  una conexion
+        $sentencia = $bdd->prepare("SELECT * FROM equipo");
+        $sentencia->execute();
 
-    $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ); // Obtenemos los datos (para generar el HTML)
+        $equipos = $sentencia->fetchAll(PDO::FETCH_OBJ); // Obtenemos los datos (para generar el HTML)
         return $equipos;
+    }
 
-}
-
- function findEquipoById($id)
+    function findEquipoById($id)
     {
         $db = $this->getPDO(); // Abrimos  una conexión
 
@@ -31,26 +32,21 @@ function all(){
         $sentencia->execute([$nombre, $fundacion, $pais, $imagen]);
     }
 
+    function updateEquipo($id_equipo, $nombre, $fundacion, $pais, $imagen)
+    {
+
+        $db = $this->getPDO();
+        $sentencia = $db->prepare("UPDATE equipo SET nombre = ?, fundacion = ?, pais = ?, imagen = ? WHERE id_equipo = ?");
+        $sentencia->execute([$nombre, $fundacion, $pais, $imagen, $id_equipo]);
+    }
+
+
+
+
     function deleteEquipo($id)
     {
         $db = $this->getPDO();
         $sentencia = $db->prepare("DELETE FROM equipo WHERE id_equipo = ?");
         $sentencia->execute([$id]);
     }
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-

@@ -18,10 +18,9 @@ class controllerEquipos
 
     function getEquipos()
     {
-         if(Helpers::barreraSeguridad()){
-        $equipos = $this->model->all();
-        $this->view->showEquipos($equipos);
-        
+        if (Helpers::barreraSeguridad()) {
+            $equipos = $this->model->all();
+            $this->view->showEquipos($equipos);
         }
     }
     function getEquipoById($id)
@@ -32,10 +31,14 @@ class controllerEquipos
 
     function mostrarFormularioEquipo()
     {
-         if(Helpers::barreraSeguridad()){
-        $this->view->showFormEquipo($err = null);
-        
+        if (Helpers::barreraSeguridad()) {
+            $this->view->showFormEquipo(null, null);
         }
+    }
+    function editarFormulario($id)
+    {
+        $equipo = $this->model->findEquipoById($id);
+        $this->view->showFormEquipo($equipo);
     }
 
 
@@ -44,6 +47,7 @@ class controllerEquipos
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             if (!empty($_POST['nombre']) && !empty($_POST['pais']) && !empty($_POST['fundacion'])) {
+                $id_equipo = isset($_POST['id_equipo']) ? $_POST['id_equipo'] : null;
                 $nombre = $_POST['nombre'];
                 $pais = $_POST['pais'];
                 $fundacion = $_POST['fundacion'];
@@ -59,10 +63,15 @@ class controllerEquipos
                 }
 
 
-
-                $this->model->saveEquipo($nombre, $fundacion, $pais, $nombreFinalImg);
-                header("Location:" . BASE_URL . "equipos");
-            } else {
+                if ($id_equipo) {
+                    
+                    $this->model->updateEquipo($id_equipo, $nombre, $fundacion, $pais, $nombreFinalImg);
+                    header("Location: " . BASE_URL . "equipos");
+                } else {
+                
+                    $this->model->saveEquipo($nombre, $fundacion, $pais, $nombreFinalImg);
+                    header("Location: " . BASE_URL . "equipos");
+                }
                 $this->view->showFormEquipo("Faltan datos obligatorios");
             }
         }

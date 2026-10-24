@@ -1,17 +1,22 @@
-<<?php
+<?php
 include "templates/header.php";
-        foreach ($equipos as $equipo) { ?>
-            <a href="jugadores_equipo/<?= $equipo->id_equipo ?>">
+?>
+
+<main class="jugadores-page">
+    <div class="equipos-list">
+        <?php foreach ($equipos as $equipo) { ?>
+            <a href="jugadores_equipo/<?= $equipo->id_equipo ?>" style="text-decoration: none;">
                 <div class="equipos">
                     <div class="card-equipo">
-                        <img style="width: 330px; " src="<?= $equipo->imagen ?>" class="card-img-top" alt="...">
+                        <img src="<?= $equipo->imagen ?>" class="card-img-top" alt="Escudo de <?= htmlspecialchars($equipo->nombre) ?>">
                     </div>
                 </div>
             </a>
-        <?php
-        }
-        ?>
-    <?php
-        include "templates/footer.php";
-        ?>
+        <?php } ?>
+    </div>
+</main>
+
+<?php
+include "templates/footer.php";
+?>
 

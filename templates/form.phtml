@@ -1,90 +1,114 @@
 <?php
-    
+
 include "templates/header.php";
 
-    ?>
+$isEdit = isset($equipo);
+?>
 
-       <div class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      
-      <!-- Tarjeta moderna para el formulario -->
-      <div class="card bg-dark text-light shadow-lg border border-secondary rounded-4">
-        
-        <!-- Encabezado de la tarjeta -->
-        <div class="card-header border-bottom border-secondary text-center py-4">
-          <h3 class="fw-bold mb-0 text-uppercase tracking-wide text-warning">
-            <i class="bi bi-shield-plus me-2"></i>Registrar Equipo
-          </h3>
-          <p class="text-muted small mb-0 mt-1">Ingresa los datos correspondientes para dar de alta al club</p>
-        </div>
-
-        <!-- Cuerpo del formulario -->
-        <div class="card-body p-4">
-          <form action="datosFormEquipo" method="POST" enctype="multipart/form-data">
-            
-            <!-- Campo: Nombre -->
-            <div class="mb-4">
-              <label class="form-label fw-semibold text-warning small">Nombre del equipo</label>
-              <div class="input-group">
-                <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-fonts"></i></span>
-                <input type="text" class="form-control bg-dark border-secondary text-light" name="nombre" placeholder="Ej. Real Madrid" required>
-              </div>
-            </div>
-
-            <!-- Fila de dos columnas: País y Fundación -->
-            <div class="row mb-4">
-              <!-- Campo: País -->
-              <div class="col-sm-6 mb-3 mb-sm-0">
-                <label class="form-label fw-semibold text-warning small">País</label>
-                <div class="input-group">
-                  <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-geo-alt-fill"></i></span>
-                  <input type="text" class="form-control bg-dark border-secondary text-light" name="pais" placeholder="Ej. España" required>
-                </div>
-              </div>
-              
-              <!-- Campo: Fundación -->
-              <div class="col-sm-6">
-                <label class="form-label fw-semibold text-warning small">Fundación</label>
-                <div class="input-group">
-                  <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-calendar-event"></i></span>
-                  <input type="text" class="form-control bg-dark border-secondary text-light" name="fundacion" placeholder="Ej. 1902" required>
-                </div>
-              </div>
-            </div>
-
-            <!-- Campo: Imagen / Escudo -->
-            <div class="mb-4">
-              <label class="form-label fw-semibold text-warning small">Imagen / Escudo del club</label>
-              <input type="file" class="form-control bg-dark border-secondary text-light" name="imagen" required>
-              <div class="form-text text-muted small">Formatos permitidos: PNG, JPG (Se recomienda fondo transparente).</div>
-            </div>
-
-            <!-- Botones de Acción -->
-            <div class="d-grid gap-2 mt-5">
-              <button type="submit" class="btn btn-warning btn-lg fw-bold text-dark rounded-pill shadow-sm">
-                <i class="bi bi-check-circle-fill me-2"></i>Guardar Equipo
-              </button>
-              <a href="equipos" class="btn btn-outline-secondary btn-sm text-light rounded-pill mt-1">
-                Cancelar
-              </a>
-            </div>
-
-          </form>
-        </div>
-
+<main class="form-page">
+  <section class="form-card form-card--narrow">
+    <div class="form-card__top">
+      <div class="form-brand-mark" aria-hidden="true">
+        <i class="bi bi-shield-shaded"></i>
       </div>
-
+      <p class="form-eyebrow">FÚTBOL APP</p>
+      <h1><?php echo $isEdit ? 'Editar equipo' : 'Registrar equipo'; ?></h1>
+      <p class="form-subtitle"><?php echo $isEdit ? 'Actualizá los datos del club' : 'Ingresá los datos para dar de alta al club'; ?></p>
     </div>
-  </div>
-</div>
+
+    <div class="form-body">
+      <form action="datosFormEquipo" method="POST" enctype="multipart/form-data">
+        <?php if ($isEdit): ?>
+          <input type="hidden" name="id_equipo" value="<?php echo htmlspecialchars($equipo->id_equipo); ?>">
+        <?php endif; ?>
+
+        <div class="form-field">
+          <label class="form-label">Nombre del equipo</label>
+          <div class="form-input-group">
+            <span class="form-input-icon"><i class="bi bi-fonts"></i></span>
+            <input type="text"
+              class="form-control"
+              name="nombre"
+              value="<?php echo $isEdit ? htmlspecialchars($equipo->nombre) : ''; ?>"
+              placeholder="Ej. Real Madrid"
+              required>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label">País</label>
+            <div class="form-input-group">
+              <span class="form-input-icon"><i class="bi bi-geo-alt-fill"></i></span>
+              <input type="text"
+                class="form-control"
+                name="pais"
+                value="<?php echo $isEdit ? htmlspecialchars($equipo->pais) : ''; ?>"
+                placeholder="Ej. España"
+                required>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label">Fundación</label>
+            <div class="form-input-group">
+              <span class="form-input-icon"><i class="bi bi-calendar-event"></i></span>
+              <input type="text"
+                class="form-control"
+                name="fundacion"
+                value="<?php echo $isEdit ? htmlspecialchars($equipo->fundacion) : ''; ?>"
+                placeholder="Ej. 1902"
+                required>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label">Imagen / Escudo del club</label>
+
+          <?php if ($isEdit && !empty($equipo->imagen)): ?>
+            <div class="d-flex align-items-center gap-3">
+              <img src="<?php echo htmlspecialchars($equipo->imagen); ?>" alt="Escudo actual"
+                style="width: 56px; height: 56px; object-fit: contain;"
+                class="img-thumbnail bg-light border">
+              <span class="form-hint">Escudo actual</span>
+            </div>
+          <?php endif; ?>
+
+          <div class="form-file">
+            <input type="file"
+              class="form-control form-file-input"
+              name="imagen"
+              <?php echo $isEdit ? '' : 'required'; ?>>
+            <span class="form-hint">Formatos permitidos: PNG, JPG (se recomienda fondo transparente).</span>
+          </div>
+        </div>
+
+        <div class="form-actions form-actions--split">
+          <?php if ($isEdit) { ?>
+            <button type="submit" class="btn-form btn-form-primary">
+              <i class="bi bi-pencil-square"></i>Editar equipo
+            </button>
+          <?php } else { ?>
+            <button type="submit" class="btn-form btn-form-primary">
+              <i class="bi bi-check-circle-fill"></i>Agregar equipo
+            </button>
+          <?php } ?>
+          <a href="equipos" class="btn-form btn-form-ghost">
+            <i class="bi bi-arrow-left"></i>Cancelar
+          </a>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
 
 
 <?php
-        if ($err) {
-            echo "<h1>" . $err . "</h1>";
-        }
-        include "templates/footer.php";
+if (isset($err) && $err) {
+  echo "<p class='text-center mt-3'>" . htmlspecialchars($err) . "</p>";
+}
+include "templates/footer.php";
 
 
 ?>

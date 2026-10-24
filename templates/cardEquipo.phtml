@@ -1,26 +1,72 @@
 <?php
-
 include "templates/header.php";
 ?>
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title"><?= $equipo->nombre ?></h5>
-        <img src="<?= $equipo->imagen ?>" class="card-img-top" alt="...">
-        <p class="card-text"><?= $equipo->fundacion ?></p>
-        <p class="card-text"><?= $equipo->pais ?></p>
-        <a href="equipos" class="btn btn-primary">Volver</a>
-        <a href="jugadores_equipo/<?= $equipo->id_equipo ?>" class="btn btn-danger">ver jugadores</a>
-        <?php
-        if (Helpers::esAdmin()) {
-        ?>
-            <a href="equipos" class="btn btn-primary">Agregar jugador</a>
-            <a href="borrar/<?= $equipo->id_equipo ?>" class="btn btn-danger">Borrar</a>
-        <?php
 
-        }
-        ?>
-    </div>
-</div>
+<main class="equipo-detail-page">
+    <section class="equipo-detail-card">
+        <div class="equipo-detail-accent"></div>
+
+        <div class="equipo-detail-content">
+            <span class="equipo-detail-label">FICHA DEL EQUIPO</span>
+
+            <h1 class="equipo-detail-title"><?= $equipo->nombre ?></h1>
+
+            <div class="equipo-detail-crest-wrap">
+                <img
+                    src="<?= $equipo->imagen ?>"
+                    class="equipo-detail-crest"
+                    alt="Escudo de <?= $equipo->nombre ?>"
+                >
+            </div>
+
+            <div class="equipo-detail-info">
+                <div class="equipo-detail-info-item">
+                    <span class="equipo-detail-info-icon" aria-hidden="true"><i class="bi bi-calendar-event"></i></span>
+                    <div>
+                        <span class="equipo-detail-info-label">Fundación</span>
+                        <p><?=$equipo->fundacion ?></p>
+                    </div>
+                </div>
+
+                <div class="equipo-detail-info-item">
+                    <span class="equipo-detail-info-icon" aria-hidden="true"><i class="bi bi-geo-alt"></i></span>
+                    <div>
+                        <span class="equipo-detail-info-label">País</span>
+                        <p><?=$equipo->pais ?></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="equipo-detail-actions">
+                <a href="equipos" class="btn-equipo btn-equipo-secondary">
+                    <i class="bi bi-arrow-left" aria-hidden="true"></i> Volver
+                </a>
+                <a href="jugadores_equipo/<?=  $equipo->id_equipo ?>" class="btn-equipo btn-equipo-primary">
+                    <i class="bi bi-people-fill" aria-hidden="true"></i> Ver jugadores
+                </a>
+
+                <?php if (Helpers::esAdmin()) { ?>
+                    <div class="equipo-detail-admin-actions">
+                        <a href="formJugador" class="btn-equipo btn-equipo-outline">
+                            <i class="bi bi-person-plus-fill" aria-hidden="true"></i> Agregar jugador
+                        </a>
+                        <a href="editarEquipo/<?= $equipo->id_equipo ?>" class="btn-equipo btn-equipo-warning">
+                            <i class="bi bi-pencil-square" aria-hidden="true"></i> Editar
+                        </a>
+                        <a
+                            href="borrarEquipo/<?=  $equipo->id_equipo ?>"
+                            class="btn-equipo btn-equipo-danger"
+                            onclick="return confirm('¿Seguro que querés borrar este equipo?');"
+                        >
+                            <i class="bi bi-trash3" aria-hidden="true"></i> Borrar
+                        </a>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
+</main>
+
 <?php
 include "templates/footer.php";
 ?>

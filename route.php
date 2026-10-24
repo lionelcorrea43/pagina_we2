@@ -82,5 +82,7 @@ switch ($parametros[0]) {
         break;
     case 'borrarEquipo':
         $controllerEquip->eliminarEquipo($parametros[1]);
-        break;
+     case 'editarEquipo':
+    $controllerEquip->editarFormulario($parametros[1]);
+    break;
 }

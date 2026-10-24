@@ -1,5 +1,5 @@
 Integrante 1: Leonel Godoy Chaparro.
-Email: godoychaparroleonel@gmail.com
+Email:
 Integrante 2: Dylan Lionel Correa
 Email: Lionelcorrea43@gmail.com 
 Temática: Página Deportiva.

@@ -4,118 +4,99 @@ include "templates/header.php";
 
 ?>
 
-<div class="container my-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
+<main class="form-page">
+    <section class="form-card">
+        <div class="form-card__top">
+            <div class="form-brand-mark" aria-hidden="true">
+                <i class="bi bi-person-plus-fill"></i>
+            </div>
+            <p class="form-eyebrow">FÚTBOL APP</p>
+            <h1>Registrar jugador</h1>
+            <p class="form-subtitle">Ingresá los datos para dar de alta al jugador</p>
+        </div>
 
-            <!-- Tarjeta moderna para el formulario -->
-            <div class="card bg-dark text-light shadow-lg border border-secondary rounded-4">
+        <div class="form-body">
+            <form action="datosFormJugador" method="POST" enctype="multipart/form-data">
 
-                <!-- Encabezado de la tarjeta -->
-                <div class="card-header border-bottom border-secondary text-center py-4">
-                    <h3 class="fw-bold mb-0 text-uppercase tracking-wide text-warning">
-                        <i class="bi bi-shield-plus me-2"></i>Registrar Jugador
-                    </h3>
-                    <p class="text-muted small mb-0 mt-1">Ingresa los datos correspondientes para dar de alta al jugador</p>
-                </div>
-
-                <!-- Cuerpo del formulario -->
-                <div class="card-body p-4">
-                    <form action="datosFormJugador" method="POST" enctype="multipart/form-data">
-
-                        <!-- Fila de dos columnas: Nombre y Apellido -->
-                        <div class="row mb-4">
-                            <!-- Campo: Nombre -->
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label class="form-label fw-semibold text-warning small">Nombre</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-geo-alt-fill"></i></span>
-                                    <input type="text" class="form-control bg-dark border-secondary text-light" name="nombre" placeholder="Ej. Lionel" required>
-                                </div>
-                            </div>
-
-                            <!-- Campo: Apellido -->
-                            <div class="col-sm-6">
-                                <label class="form-label fw-semibold text-warning small">Apellido</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-calendar-event"></i></span>
-                                    <input type="text" class="form-control bg-dark border-secondary text-light" name="apellido" placeholder="Ej. Messi" required>
-                                </div>
-                            </div>
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label class="form-label">Nombre</label>
+                        <div class="form-input-group">
+                            <span class="form-input-icon"><i class="bi bi-person-fill"></i></span>
+                            <input type="text" class="form-control" name="nombre" placeholder="Ej. Lionel" required>
                         </div>
+                    </div>
 
-                        <!-- Fila de dos columnas: Nombre y Apellido -->
-                        <div class="row mb-4">
-                            <!-- Campo: Nombre -->
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label class="form-label fw-semibold text-warning small">Posicion</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-geo-alt-fill"></i></span>
-                                    <input type="text" class="form-control bg-dark border-secondary text-light" name="posicion" placeholder="Ej. Delantero" required>
-                                </div>
-                            </div>
-
-                            <!-- Campo: Apellido -->
-                            <div class="col-sm-6">
-                                <label class="form-label fw-semibold text-warning small">Sueldo</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-calendar-event"></i></span>
-                                    <input type="text" class="form-control bg-dark border-secondary text-light" name="sueldo" placeholder="Ej. 1000000" required>
-                                </div>
-                            </div>
+                    <div class="form-field">
+                        <label class="form-label">Apellido</label>
+                        <div class="form-input-group">
+                            <span class="form-input-icon"><i class="bi bi-person"></i></span>
+                            <input type="text" class="form-control" name="apellido" placeholder="Ej. Messi" required>
                         </div>
-                        <!-- Fila de dos columnas: Nombre y Apellido -->
-                        <div class="row mb-4">
-                            <!-- Campo: Nombre -->
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                                <label class="form-label fw-semibold text-warning small">Equipo</label>
-                                <div class="input-group">
-                                    <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-geo-alt-fill"></i></span>
-                                    <input type="number" class="form-control bg-dark border-secondary text-light" name="id_equipo" placeholder="Ej. 1" required>
-                                </div>
-                            </div>
-                        </div>
-
-                <!-- Campo: Pais -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold text-warning small">Fecha de Nacimiento</label>
-                    <div class="input-group">
-                        <span class="input-group-text bg-secondary border-secondary text-light"><i class="bi bi-fonts"></i></span>
-                        <input type="date" class="form-control bg-dark border-secondary text-light" name="fecha_nacimiento" required>
                     </div>
                 </div>
 
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label class="form-label">Posición</label>
+                        <div class="form-input-group">
+                            <span class="form-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
+                            <input type="text" class="form-control" name="posicion" placeholder="Ej. Delantero" required>
+                        </div>
+                    </div>
 
-                <!-- Campo: Imagen -->
-                <div class="mb-4">
-                    <label class="form-label fw-semibold text-warning small">Imagen</label>
-                    <input type="file" class="form-control bg-dark border-secondary text-light" name="imagen" required>
-                    <div class="form-text text-muted small">Formatos permitidos: PNG, JPG (Se recomienda fondo transparente).</div>
+                    <div class="form-field">
+                        <label class="form-label">Sueldo</label>
+                        <div class="form-input-group">
+                            <span class="form-input-icon"><i class="bi bi-cash-stack"></i></span>
+                            <input type="text" class="form-control" name="sueldo" placeholder="Ej. 1000000" required>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Botones de Acción -->
-                <div class="d-grid gap-2 mt-5">
-                    <button type="submit" class="btn btn-warning btn-lg fw-bold text-dark rounded-pill shadow-sm">
-                        <i class="bi bi-check-circle-fill me-2"></i>Guardar Jugador
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label class="form-label">Equipo (ID)</label>
+                        <div class="form-input-group">
+                            <span class="form-input-icon"><i class="bi bi-shield-fill"></i></span>
+                            <input type="number" class="form-control" name="id_equipo" placeholder="Ej. 1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label">Fecha de nacimiento</label>
+                        <div class="form-input-group">
+                            <span class="form-input-icon"><i class="bi bi-calendar-event"></i></span>
+                            <input type="date" class="form-control" name="fecha_nacimiento" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label class="form-label">Imagen</label>
+                    <div class="form-file">
+                        <input type="file" class="form-control form-file-input" name="imagen" required>
+                        <span class="form-hint">Formatos permitidos: PNG, JPG (se recomienda fondo transparente).</span>
+                    </div>
+                </div>
+
+                <div class="form-actions form-actions--split">
+                    <button type="submit" class="btn-form btn-form-primary">
+                        <i class="bi bi-check-circle-fill"></i>Guardar jugador
                     </button>
-                    <a href="jugadores" class="btn btn-outline-secondary btn-sm text-light rounded-pill mt-1">
-                        Cancelar
+                    <a href="jugadores" class="btn-form btn-form-ghost">
+                        <i class="bi bi-arrow-left"></i>Cancelar
                     </a>
                 </div>
-
-                </form>
-            </div>
-
+            </form>
         </div>
-
-    </div>
-</div>
-</div>
+    </section>
+</main>
 
 
 <?php
-if ($err) {
-    echo "<h1>" . $err . "</h1>";
+if (isset($err) && $err) {
+    echo "<p class='text-center mt-3'>" . htmlspecialchars($err) . "</p>";
 }
 include "templates/footer.php";
 

@@ -1,42 +1,46 @@
 <?php
 include "templates/header.php"; ?>
 
-<!-- Contenedor del formulario con el fondo gris oscuro exacto, bordes redondeados y padding -->
-<form action="datosRegistro" method="POST" class="w-25 mx-auto p-4 rounded shadow-lg" style="background-color: #1a1e24; border: 1px solid #2d323b;">
-    
-    <!-- Encabezado con la tipografía y colores de la referencia -->
-    <div class="text-center mb-4">
-        <h2 class="fw-bold m-0" style="color: #ffbc00; letter-spacing: 0.5px; font-size: 1.6rem;">REGISTRO</h2>
-        <p class="text-muted small mt-1" style="color: #8a929a !important;">Ingresa los datos correspondientes para dar de alta al usuario</p>
-        <hr style="border-color: #2d323b; opacity: 1;">
+<main class="form-page">
+  <section class="form-card">
+    <div class="form-card__top">
+      <div class="form-brand-mark" aria-hidden="true">
+        <i class="bi bi-person-badge-fill"></i>
+      </div>
+      <p class="form-eyebrow">FÚTBOL APP</p>
+      <h1>Creá tu cuenta</h1>
+      <p class="form-subtitle">Ingresá los datos para dar de alta al usuario</p>
     </div>
 
-    <!-- Campo Email con su respectivo Label -->
-    <div class="mb-3">
-        <label class="form-label small fw-semibold" style="color: #ffbc00;">Email</label>
-        <input type="text" class="form-control" name="email" placeholder="Ingrese su email..." 
-               style="background-color: #22272e; color: #ffffff; border: 1px solid #2d323b; padding: 0.6rem 0.75rem;">
-    </div>
-    
-    <!-- Campo Password con su respectivo Label -->
-    <div class="mb-4">
-        <label class="form-label small fw-semibold" style="color: #ffbc00;">Password</label>
-        <input type="password" class="form-control" name="password" placeholder="Ingrese su password..." 
-               style="background-color: #22272e; color: #ffffff; border: 1px solid #2d323b; padding: 0.6rem 0.75rem;">
-    </div>
+    <div class="form-body">
+      <form action="datosRegistro" method="POST">
+        <div class="form-field">
+          <label class="form-label" for="email">Correo electrónico</label>
+          <div class="form-input-group">
+            <span class="form-input-icon"><i class="bi bi-envelope-fill"></i></span>
+            <input type="email" id="email" class="form-control" name="email" placeholder="usuario@correo.com" required>
+          </div>
+        </div>
 
-    <!-- Botón Principal "Crear cuenta" estilo píldora amarillo -->
-    <button type="submit" class="btn fw-bold w-100 rounded-pill border-0 mb-2" 
-            style="background-color: #ffbc00; color: #101418; padding: 0.7rem; font-size: 1rem;">
-        Crear cuenta
-    </button>
-    
-    <!-- Botón Cancelar o Volver al Login por si el usuario se arrepiente -->
-    <button type="button" class="btn btn-link w-100 text-decoration-none rounded-pill small" 
-            style="color: #8a929a; border: 1px solid #2d323b; background: transparent; padding: 0.4rem;">
-        Cancelar
-    </button>
-</form>
+        <div class="form-field">
+          <label class="form-label" for="password">Contraseña</label>
+          <div class="form-input-group">
+            <span class="form-input-icon"><i class="bi bi-lock-fill"></i></span>
+            <input type="password" id="password" class="form-control" name="password" placeholder="Ingresá tu contraseña" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-form btn-form-primary w-100">
+          Crear cuenta <i class="bi bi-check-circle-fill"></i>
+        </button>
+
+        <p class="text-center mt-3 mb-0">
+          <a href="login" style="color: var(--app-gold); font-weight: 800; text-decoration: none;"><i class="bi bi-arrow-left me-1"></i>Cancelar y volver al login</a>
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
 
 <?php
 include "templates/footer.php";

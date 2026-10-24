@@ -15,9 +15,8 @@ class ViewEquipos
 
 
 
-    function showFormEquipo($err = null)
+    function showFormEquipo( $equipo = null,$err = null)
     {
-        
         include "templates/form.phtml";
     }
 }
