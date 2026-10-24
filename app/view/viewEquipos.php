@@ -1,6 +1,7 @@
 <?php
+require_once "app/view/View.php";
 
-class ViewEquipos
+class ViewEquipos extends View
 {
 
     function showEquipos($equipos)

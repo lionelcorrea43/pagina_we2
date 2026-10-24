@@ -1,7 +1,6 @@
 <?php
-
-
-class viewJugador
+require_once "app/view/View.php";
+class viewJugador extends View
 {
 
 

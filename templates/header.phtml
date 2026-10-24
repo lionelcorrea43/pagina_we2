@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="style.css">
  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
-    <title><?php $this->getNombreApp()?></title>
+    <title><?= $this->getNombreApp()?></title>
 </head>
 <body class="app-layout">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow fixed-top py-2">
     <div class="container py-1">
         <a class="navbar-brand fw-bold text-uppercase d-flex align-items-center fs-4" href="equipos">
             <i class="bi bi-trophy-fill me-2 text-warning" aria-hidden="true"></i>
-           <span class="text-warning"><?php $this->getNombreApp()?></span>
+           <span class="text-warning"><?= $this->getNombreApp()?></span>
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

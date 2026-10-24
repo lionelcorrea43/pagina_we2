@@ -11,7 +11,7 @@ class View{
     }
 
     function getNombreApp(){
-        return "Diario Digital";
+        return "Futbol App";
     }
 
     function verificarUsuario(){

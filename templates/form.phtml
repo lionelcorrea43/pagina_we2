@@ -1,6 +1,6 @@
 <?php
 
-include "templates/header.php";
+include "templates/header.phtml";
 
 $isEdit = isset($equipo);
 ?>
@@ -11,7 +11,7 @@ $isEdit = isset($equipo);
       <div class="form-brand-mark" aria-hidden="true">
         <i class="bi bi-shield-shaded"></i>
       </div>
-      <p class="form-eyebrow">FÚTBOL APP</p>
+      <p class="form-eyebrow"><?= $this->getNombreApp() ?></p>
       <h1><?php echo $isEdit ? 'Editar equipo' : 'Registrar equipo'; ?></h1>
       <p class="form-subtitle"><?php echo $isEdit ? 'Actualizá los datos del club' : 'Ingresá los datos para dar de alta al club'; ?></p>
     </div>
@@ -108,7 +108,7 @@ $isEdit = isset($equipo);
 if (isset($err) && $err) {
   echo "<p class='text-center mt-3'>" . htmlspecialchars($err) . "</p>";
 }
-include "templates/footer.php";
+include "templates/footer.phtml";
 
 
 ?>

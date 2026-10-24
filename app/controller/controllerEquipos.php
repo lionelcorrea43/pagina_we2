@@ -63,9 +63,11 @@ class controllerEquipos
                 }
 
 
-                if ($id_equipo) {
-                    
+                if ($id_equipo && $nombreFinalImg != null) {
                     $this->model->updateEquipo($id_equipo, $nombre, $fundacion, $pais, $nombreFinalImg);
+                }   else if ($id_equipo && $nombreFinalImg == null) {
+                    $equipo = $this->model->findEquipoById($id_equipo);
+                    $this->model->updateEquipo($id_equipo, $nombre, $fundacion, $pais, $equipo->imagen);
                     header("Location: " . BASE_URL . "equipos");
                 } else {
                 
