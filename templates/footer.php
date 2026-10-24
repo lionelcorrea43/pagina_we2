@@ -7,7 +7,7 @@
       <!-- Lado Izquierdo: Marca y descripción rápida -->
       <div class="col-md-4 mb-3 mb-md-0 text-center text-md-start">
         <a class="text-uppercase fw-bold text-decoration-none text-light fs-5" href="equipos">
-          <i class="bi bi-trophy-fill text-warning me-2"></i>Fútbol<span class="text-warning">App</span>
+          <i class="bi bi-trophy-fill text-warning me-2"></i><span class="text-warning"><?php this->getNombreApp()?></span>
         </a>
         <p class="text-muted small mb-0 mt-1">Gestión integral de tus equipos y jugadores favoritos.</p>
       </div>
@@ -27,7 +27,7 @@
     <!-- Copyright -->
     <div class="row">
       <div class="col text-center">
-        <p class="text-muted small mb-0">&copy; 2026 FútbolApp. Todos los derechos reservados.</p>
+        <p class="text-muted small mb-0"><?php echo "2026" . this->getNombreApp() . "Todos los derechos reservados". ?></p>
       </div>
     </div>
   </div>
