@@ -7,7 +7,7 @@ class modelUsuarios extends Model
     function registro($userEmail, $userPassword)
     {
         //Guardo el nuevo usuario en la base de datos
-        $db = $this->getPDO();
+        $db = $this->db;
         $query = $db->prepare('INSERT INTO usuarios (email, password) VALUES (? , ?)');
         $query->execute([$userEmail, $userPassword]);
     }
@@ -15,7 +15,7 @@ class modelUsuarios extends Model
 
     function existeUsuario($usuario)
     {
-        $db =$this->getPDO();
+        $db =$this->db;
         $sentencia = $db->prepare("SELECT * FROM usuarios WHERE email = ?");
         $sentencia->execute([$usuario]); // Ejecutamos la consulta
 
@@ -23,3 +23,4 @@ class modelUsuarios extends Model
         return $usuario;
     }
 }
+

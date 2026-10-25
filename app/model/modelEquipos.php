@@ -6,7 +6,7 @@ class modelEquipos extends Model
 
     function all()
     {
-        $bdd = $this->getPDO(); // Abrimos  una conexion
+        $bdd = $this->db; // Abrimos  una conexion
         $sentencia = $bdd->prepare("SELECT * FROM equipo");
         $sentencia->execute();
 
@@ -16,7 +16,7 @@ class modelEquipos extends Model
 
     function findEquipoById($id)
     {
-        $db = $this->getPDO(); // Abrimos  una conexión
+        $db = $this->db; // Abrimos  una conexión
 
         $sentencia = $db->prepare("SELECT * FROM equipo WHERE id_equipo = ?");
         $sentencia->execute([$id]); // Ejecutamos la consulta
@@ -27,7 +27,7 @@ class modelEquipos extends Model
 
     function saveEquipo($nombre, $fundacion, $pais, $imagen)
     {
-        $db = $this->getPDO();
+        $db = $this->db;
         $sentencia = $db->prepare("INSERT INTO equipo (nombre, fundacion, pais, imagen) VALUES (?,?,?,?)");
         $sentencia->execute([$nombre, $fundacion, $pais, $imagen]);
     }
@@ -35,7 +35,7 @@ class modelEquipos extends Model
     function updateEquipo($id_equipo, $nombre, $fundacion, $pais, $imagen)
     {
 
-        $db = $this->getPDO();
+        $db = $this->db;
         $sentencia = $db->prepare("UPDATE equipo SET nombre = ?, fundacion = ?, pais = ?, imagen = ? WHERE id_equipo = ?");
         $sentencia->execute([$nombre, $fundacion, $pais, $imagen, $id_equipo]);
     }
@@ -45,8 +45,9 @@ class modelEquipos extends Model
 
     function deleteEquipo($id)
     {
-        $db = $this->getPDO();
+        $db = $this->db;
         $sentencia = $db->prepare("DELETE FROM equipo WHERE id_equipo = ?");
         $sentencia->execute([$id]);
     }
 }
+
