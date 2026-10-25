@@ -100,10 +100,16 @@ $isEdit = isset($jugador);
                         <button type="submit" class="btn-form btn-form-primary">
                             <i class="bi bi-check-circle-fill"></i>Agregar jugador
                         </button>
-                    <?php } ?>
-                    <a href="jugadores_equipo/<?= $jugador->id_equipo ?>" class="btn-form btn-form-ghost">
+                    <?php }
+                        if ($isEdit) { ?>
+                            <a href="jugadores_equipo/<?= $jugador->id_equipo ?>/" class="btn-form btn-form-ghost">
+                                <i class="bi bi-arrow-left"></i>Cancelar
+                            </a>
+                        <?php } else { ?>
+                    <a href="equipos" class="btn-form btn-form-ghost">
                         <i class="bi bi-arrow-left"></i>Cancelar
                     </a>
+                    <?php } ?>
                 </div>
             </form>
         </div>
