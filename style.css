@@ -53,7 +53,9 @@ body.app-layout>footer {
 }
 
 .nav-link:hover,
-.nav-link:focus {
+.nav-link:focus,
+.footer-link:hover,
+.footer-link:focus {
     color: var(--app-gold-light) !important;
 }
 
@@ -453,6 +455,183 @@ body.app-layout>footer {
     background:
         radial-gradient(circle at 12% 15%, rgba(232, 195, 106, .24), transparent 30%),
         #f4f6f7;
+}
+
+.perfil-page {
+    flex: 1 0 auto;
+    width: 100%;
+    min-height: calc(100vh - 76px);
+    padding: 96px 20px 56px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at 14% 18%, rgba(232, 195, 106, .22), transparent 32%),
+        radial-gradient(circle at 88% 82%, rgba(184, 137, 47, .12), transparent 30%),
+        #f4f6f7;
+}
+
+.perfil-card {
+    width: min(100%, 600px);
+    overflow: hidden;
+    border: 1px solid rgba(184, 137, 47, .24);
+    border-radius: 22px;
+    background: linear-gradient(160deg, #262626 0%, #141414 100%);
+    box-shadow: 0 22px 54px rgba(20, 20, 20, .22);
+    color: var(--app-text);
+}
+
+.perfil-card__accent {
+    height: 9px;
+    background: linear-gradient(90deg, #262626, var(--app-gold-light), var(--app-gold), #262626);
+}
+
+.perfil-card__content {
+    padding: 38px clamp(22px, 6vw, 48px) 42px;
+    text-align: center;
+}
+
+.perfil-card__avatar {
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 20px;
+    border: 2px solid rgba(232, 195, 106, .8);
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--app-gold-light), var(--app-gold));
+    box-shadow: 0 0 0 7px rgba(184, 137, 47, .14);
+    color: var(--app-dark);
+    font-size: 2.6rem;
+}
+
+.perfil-card__eyebrow {
+    margin: 0 0 7px;
+    color: var(--app-gold-light);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+
+.perfil-card h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(1.8rem, 5vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: -.035em;
+}
+
+.perfil-card__subtitle {
+    margin: 8px 0 28px;
+    color: rgba(245, 245, 243, .7);
+}
+
+.perfil-card__details {
+    display: grid;
+    gap: 12px;
+    margin: 0 0 28px;
+    text-align: left;
+}
+
+.perfil-card__detail {
+    min-width: 0;
+    padding: 16px 18px;
+    border: 1px solid rgba(232, 195, 106, .23);
+    border-radius: 13px;
+    background: rgba(255, 255, 255, .045);
+}
+
+.perfil-card__detail dt {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 7px;
+    color: var(--app-gold-light);
+    font-size: .78rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.perfil-card__detail dd {
+    margin: 0;
+    color: #fff;
+    font-weight: 650;
+    overflow-wrap: anywhere;
+}
+
+.perfil-card__role {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background: rgba(232, 195, 106, .14);
+    color: var(--app-gold-light);
+    font-size: .88rem;
+}
+
+.perfil-card__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+.btn-perfil {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 46px;
+    padding: 11px 20px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform .2s ease, filter .2s ease, border-color .2s ease;
+}
+
+.btn-perfil:hover {
+    transform: translateY(-2px);
+}
+
+.btn-perfil-primary {
+    background: linear-gradient(135deg, var(--app-gold-light), var(--app-gold));
+    box-shadow: 0 8px 18px rgba(184, 137, 47, .25);
+    color: var(--app-dark);
+}
+
+.btn-perfil-primary:hover {
+    color: var(--app-dark);
+    filter: brightness(1.08);
+}
+
+.btn-perfil-secondary {
+    border-color: rgba(232, 195, 106, .55);
+    color: var(--app-text);
+}
+
+.btn-perfil-secondary:hover {
+    border-color: var(--app-gold-light);
+    color: var(--app-gold-light);
+}
+
+@media (max-width: 575.98px) {
+    .perfil-page {
+        padding: 96px 14px 36px;
+    }
+
+    .perfil-card__content {
+        padding: 30px 20px 32px;
+    }
+
+    .perfil-card__actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .btn-perfil {
+        width: 100%;
+    }
 }
 
 .equipo-detail-card {

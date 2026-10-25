@@ -12,4 +12,9 @@ class viewUsuarios extends View
     {
       include "templates/formRegistro.phtml" ;
     }
+
+    function showPerfil($email, $rol)
+    {
+        include "templates/perfil.phtml";
+    }
 }

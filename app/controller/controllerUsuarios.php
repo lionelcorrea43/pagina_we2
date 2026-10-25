@@ -25,6 +25,13 @@ class controllerUsuarios
         $this->view->showFormLogin($mensaje = "");
     }
 
+    function mostrarPerfil()
+    {
+        if (Helpers::barreraSeguridad()) {
+            $this->view->showPerfil($_SESSION['USUARIO'], $_SESSION['ROL'] ?? 'Usuario');
+        }
+    }
+
 
 
     function obtenerDatosRegistro()
