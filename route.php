@@ -37,8 +37,6 @@ switch ($parametros[0]) {
     case 'logout':
         $controllerUsu->cerrarSesion();
         break;
-
-
     case 'equipos':
         $controllerEquip->getEquipos();
         break;
