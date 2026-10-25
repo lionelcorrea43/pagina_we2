@@ -83,6 +83,9 @@ switch ($parametros[0]) {
     case 'borrarEquipo':
         $controllerEquip->eliminarEquipo($parametros[1]);
      case 'editarEquipo':
-    $controllerEquip->editarFormulario($parametros[1]);
+    $controllerEquip->editarEquipo($parametros[1]);
+     case 'editarJugador':
+    $controllerJuga->editarJugador($parametros[1]);
+    
     break;
 }

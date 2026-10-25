@@ -35,7 +35,7 @@ class controllerEquipos
             $this->view->showFormEquipo(null, null);
         }
     }
-    function editarFormulario($id)
+    function editarEquipo($id)
     {
         $equipo = $this->model->findEquipoById($id);
         $this->view->showFormEquipo($equipo);
@@ -62,7 +62,6 @@ class controllerEquipos
                     move_uploaded_file($archivoTemporal, $nombreFinalImg);
                 }
 
-
                 if ($id_equipo && $nombreFinalImg != null) {
                     $this->model->updateEquipo($id_equipo, $nombre, $fundacion, $pais, $nombreFinalImg);
                 }   else if ($id_equipo && $nombreFinalImg == null) {
@@ -70,7 +69,6 @@ class controllerEquipos
                     $this->model->updateEquipo($id_equipo, $nombre, $fundacion, $pais, $equipo->imagen);
                     header("Location: " . BASE_URL . "equipos");
                 } else {
-                
                     $this->model->saveEquipo($nombre, $fundacion, $pais, $nombreFinalImg);
                     header("Location: " . BASE_URL . "equipos");
                 }

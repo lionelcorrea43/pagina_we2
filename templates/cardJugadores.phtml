@@ -13,12 +13,15 @@ include "templates/header.phtml";
                             <span class="jugador-pill"><i class="bi bi-calendar-event"></i> <?= htmlspecialchars($jugador->fecha_nacimiento) ?></span>
                             <span class="jugador-pill"><i class="bi bi-diagram-3"></i> <?= htmlspecialchars($jugador->posicion) ?></span>
                         </div>
-                        <img src="<?= $jugador->IMAGEN ?>" class="card-img-top" alt="Foto de <?= htmlspecialchars($jugador->nombre) ?>">
+                        <img src="<?= $jugador->imagen ?>" class="card-img-top" alt="Foto de <?= htmlspecialchars($jugador->nombre) ?>">
                         <div class="card-actions">
                             <a href="equipo/<?= $jugador->id_equipo ?>" class="btn btn-primary"><i class="bi bi-shield-shaded"></i> Ver club</a>
                             <?php if (Helpers::esAdmin()) { ?>
                                 <a href="borrarJugador/<?= $jugador->id_jugador ?>" class="btn btn-danger" onclick="return confirm('¿Seguro que querés borrar este jugador?');"><i class="bi bi-trash3"></i> Borrar</a>
-                            <?php } ?>
+                            <a href="editarJugador/<?= $jugador->id_jugador ?>" class="btn btn-warning">
+                            <i class="bi bi-pencil-square" aria-hidden="true"></i> Editar
+                        </a>
+                                <?php } ?>
                             <a href="equipos" class="btn btn-ghost"><i class="bi bi-arrow-left"></i> Volver</a>
                         </div>
                     </div>

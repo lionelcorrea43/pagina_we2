@@ -9,7 +9,7 @@ class viewJugador extends View
 
         include "templates/cardJugadores.phtml";
     }
-    function showFormJugador($err = null)
+    function showFormJugador($jugador = null,$err = null)
     {
         include "templates/formJugador.phtml";
     }

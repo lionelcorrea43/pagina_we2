@@ -1,7 +1,7 @@
 <?php
 
 include "templates/header.phtml";
-
+$isEdit = isset($jugador);
 ?>
 
 <main class="form-page">
@@ -10,20 +10,22 @@ include "templates/header.phtml";
             <div class="form-brand-mark" aria-hidden="true">
                 <i class="bi bi-person-plus-fill"></i>
             </div>
-            <p class="form-eyebrow">FÚTBOL APP</p>
-            <h1>Registrar jugador</h1>
-            <p class="form-subtitle">Ingresá los datos para dar de alta al jugador</p>
+            <p class="form-eyebrow"><?= $this->getNombreApp() ?></p>
+            <h1><?php echo $isEdit ? 'Editar jugador' : 'Registrar jugador'; ?></h1>
+            <p class="form-subtitle"><?php echo $isEdit ? 'Actualizá los datos del jugador' : 'Ingresá los datos para dar de alta al jugador'; ?></p>
         </div>
 
         <div class="form-body">
             <form action="datosFormJugador" method="POST" enctype="multipart/form-data">
-
+                <?php if ($isEdit): ?>
+                    <input type="hidden" name="id_jugador" value="<?php echo htmlspecialchars($jugador->id_jugador); ?>">
+                <?php endif; ?>
                 <div class="form-grid">
                     <div class="form-field">
                         <label class="form-label">Nombre</label>
                         <div class="form-input-group">
                             <span class="form-input-icon"><i class="bi bi-person-fill"></i></span>
-                            <input type="text" class="form-control" name="nombre" placeholder="Ej. Lionel" required>
+                            <input type="text" class="form-control" name="nombre" value="<?php echo $isEdit ? htmlspecialchars($jugador->nombre) : ''; ?>" placeholder="Ej. Lionel" required>
                         </div>
                     </div>
 
@@ -31,7 +33,7 @@ include "templates/header.phtml";
                         <label class="form-label">Apellido</label>
                         <div class="form-input-group">
                             <span class="form-input-icon"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control" name="apellido" placeholder="Ej. Messi" required>
+                            <input type="text" class="form-control" name="apellido" value="<?php echo $isEdit ? htmlspecialchars($jugador->apellido) : ''; ?>" placeholder="Ej. Messi" required>
                         </div>
                     </div>
                 </div>
@@ -41,7 +43,7 @@ include "templates/header.phtml";
                         <label class="form-label">Posición</label>
                         <div class="form-input-group">
                             <span class="form-input-icon"><i class="bi bi-diagram-3-fill"></i></span>
-                            <input type="text" class="form-control" name="posicion" placeholder="Ej. Delantero" required>
+                            <input type="text" class="form-control" name="posicion" value="<?php echo $isEdit ? htmlspecialchars($jugador->posicion) : ''; ?>" placeholder="Ej. Delantero" required>
                         </div>
                     </div>
 
@@ -49,7 +51,7 @@ include "templates/header.phtml";
                         <label class="form-label">Sueldo</label>
                         <div class="form-input-group">
                             <span class="form-input-icon"><i class="bi bi-cash-stack"></i></span>
-                            <input type="text" class="form-control" name="sueldo" placeholder="Ej. 1000000" required>
+                            <input type="text" class="form-control" name="sueldo" value="<?php echo $isEdit ? htmlspecialchars($jugador->sueldo) : ''; ?>" placeholder="Ej. 1000000" required>
                         </div>
                     </div>
                 </div>
@@ -59,7 +61,7 @@ include "templates/header.phtml";
                         <label class="form-label">Equipo (ID)</label>
                         <div class="form-input-group">
                             <span class="form-input-icon"><i class="bi bi-shield-fill"></i></span>
-                            <input type="number" class="form-control" name="id_equipo" placeholder="Ej. 1" required>
+                            <input type="number" class="form-control" name="id_equipo" value="<?php echo $isEdit ? htmlspecialchars($jugador->id_equipo) : ''; ?>" placeholder="Ej. 1" required>
                         </div>
                     </div>
 
@@ -67,23 +69,38 @@ include "templates/header.phtml";
                         <label class="form-label">Fecha de nacimiento</label>
                         <div class="form-input-group">
                             <span class="form-input-icon"><i class="bi bi-calendar-event"></i></span>
-                            <input type="date" class="form-control" name="fecha_nacimiento" required>
+                            <input type="date" class="form-control" name="fecha_nacimiento" value="<?php echo $isEdit ? htmlspecialchars($jugador->fecha_nacimiento) : ''; ?>" placeholder="Ej. 1987-06-24" required>
                         </div>
                     </div>
                 </div>
 
                 <div class="form-field">
                     <label class="form-label">Imagen</label>
+                    <?php if ($isEdit && !empty($jugador->imagen)): ?>
+                        <div class="d-flex align-items-center gap-3">
+                            <img src="<?php echo htmlspecialchars($jugador->imagen); ?>" alt="Imagen actual"
+                                style="width: 56px; height: 56px; object-fit: contain;"
+                                class="img-thumbnail bg-light border">
+                            <span class="form-hint">Imagen actual</span>
+                        </div>
+                    <?php endif; ?>
+
                     <div class="form-file">
-                        <input type="file" class="form-control form-file-input" name="imagen" required>
+                        <input type="file" class="form-control form-file-input" name="imagen" <?php echo $isEdit ? '' : 'required'; ?>>
                         <span class="form-hint">Formatos permitidos: PNG, JPG (se recomienda fondo transparente).</span>
                     </div>
                 </div>
 
                 <div class="form-actions form-actions--split">
-                    <button type="submit" class="btn-form btn-form-primary">
-                        <i class="bi bi-check-circle-fill"></i>Guardar jugador
-                    </button>
+                    <?php if ($isEdit) { ?>
+                        <button type="submit" class="btn-form btn-form-primary">
+                            <i class="bi bi-check-circle-fill"></i>Editar jugador
+                        </button>
+                    <?php } else { ?>
+                        <button type="submit" class="btn-form btn-form-primary">
+                            <i class="bi bi-check-circle-fill"></i>Agregar jugador
+                        </button>
+                    <?php } ?>
                     <a href="jugadores" class="btn-form btn-form-ghost">
                         <i class="bi bi-arrow-left"></i>Cancelar
                     </a>

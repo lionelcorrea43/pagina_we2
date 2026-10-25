@@ -14,13 +14,23 @@ class modelJugadores extends Model{
         return $jugadores;
 }
 
+    function findJugadorById($id){
+        $db = $this->getPDO(); // Abrimos  una conexión
+
+        $sentencia = $db->prepare("SELECT * FROM jugador WHERE id_jugador = ?");
+        $sentencia->execute([$id]); // Ejecutamos la consulta
+
+        $jugador = $sentencia->fetch(PDO::FETCH_OBJ); // Obtenemos los datos (para generar el HTML)
+        return $jugador;
+    }
+
     function getEquipoByJugador($id){
     $bdd = $this->getPDO(); // Abrimos  una conexion
     $sentencia = $bdd->prepare("SELECT id_equipo FROM jugador where id_jugador = ?");
     $sentencia->execute([$id]);
 
-    $jugadores = $sentencia->fetchAll(PDO::FETCH_OBJ); // Obtenemos los datos (para generar el HTML)
-        return $jugadores;
+    $equipo = $sentencia->fetchAll(PDO::FETCH_OBJ); // Obtenemos los datos (para generar el HTML)
+        return $equipo;
 }
     function saveJugador( $equipo, $fecha_nacimiento, $nombre, $apellido, $sueldo, $posicion, $imagen)
     {
@@ -29,6 +39,12 @@ class modelJugadores extends Model{
         $sentencia->execute([$equipo, $fecha_nacimiento, $nombre, $apellido, $sueldo, $posicion, $imagen]);
     }
 
+    function updateJugador($equipo, $fecha_nacimiento, $nombre, $apellido, $sueldo,$posicion, $imagen, $jugador)
+    {
+        $db = $this->getPDO();
+        $sentencia = $db->prepare("UPDATE jugador SET id_equipo = ?, fecha_nacimiento = ?, nombre = ?, apellido = ?, sueldo = ?, posicion = ?, imagen = ? WHERE id_jugador = ?");
+        $sentencia->execute([$equipo, $fecha_nacimiento, $nombre, $apellido, $sueldo, $posicion, $imagen, $jugador->id_jugador]);
+    }
 
     function findJugadorByEquipo($id){
         $db = $this->getPDO(); // Abrimos  una conexión
