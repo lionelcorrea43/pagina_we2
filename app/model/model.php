@@ -1,26 +1,33 @@
 <?php
-require_once ('config.php');
+require_once('config.php');
 class Model
 {
 
-    protected $db;
+  protected $db;
+  
+  public function __construct()
+  {
+    // 1. Conexión al servidor, sin elegir base
+    $pdo = new PDO("mysql:host=" . DB_HOST . ";charset=utf8", DB_USER, DB_PASSWORD);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS `" . DB_NAME . "` CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci");
 
-    function __construct()
-    {
-        $this->db = new PDO(
-            "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8",
-            DB_USER,
-            DB_PASSWORD
-        );
-        $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $this->_deploy();
-    }
-    private function _deploy()
-    {
-        $query = $this->db->query('SHOW TABLES');
-        $tables = $query->fetchAll();
-        if (count($tables) == 0) {
-            $sql = <<<'END'
+    // 2. Conexión a la base ya existente
+    $this->db = new PDO(
+      "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8",
+      DB_USER,
+      DB_PASSWORD
+    );
+    $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $this->_deploy();
+  }
+
+  private function _deploy()
+  {
+    $query = $this->db->query('SHOW TABLES');
+    $tables = $query->fetchAll();
+    if (count($tables) == 0) {
+      $sql = <<<'END'
             -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -198,8 +205,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 END;
-            $this->db->exec($sql);
-        }
+      $this->db->exec($sql);
     }
+  }
 }
-
