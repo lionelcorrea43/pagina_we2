@@ -76,6 +76,7 @@ class controllerJugador
 
     function showJugadoresByEquipo($equipo)
     {
+        
         if (Helpers::barreraSeguridad()) {
             $jugadores = $this->model->findJugadorByEquipo($equipo); //trae todos los jugadores q tengan el mismo id, ejemplo id =1 trae a 5 jugadores
             $this->view->showJugadores($jugadores);

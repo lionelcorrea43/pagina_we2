@@ -13,15 +13,15 @@ $isEdit = isset($equipo);
         <i class="bi bi-shield-shaded"></i>
       </div>
       <p class="form-eyebrow"><?= $this->getNombreApp() ?></p>
-      <h1><?php echo $isEdit ? 'Editar equipo' : 'Registrar equipo'; ?></h1>
-      <p class="form-subtitle"><?php echo $isEdit ? 'Actualizá los datos del club' : 'Ingresá los datos para dar de alta al club'; ?></p>
+      <h1><?php if ($isEdit) { echo 'Editar equipo'; } else { echo 'Registrar equipo'; } ?></h1>
+      <p class="form-subtitle"><?php if ($isEdit) { echo 'Actualiza los datos del club'; } else { echo 'Ingresa los datos para dar de alta al club'; } ?></p>
     </div>
 
     <div class="form-body">
       <form action="datosFormEquipo" method="POST" enctype="multipart/form-data">
-        <?php if ($isEdit): ?>
-          <input type="hidden" name="id_equipo" value="<?php echo htmlspecialchars($equipo->id_equipo); ?>">
-        <?php endif; ?>
+        <?php if ($isEdit){  ?>
+          <input type="hidden" name="id_equipo" value="<?= htmlspecialchars($equipo->id_equipo ?? '') ?>">
+        <?php } ?>
 
         <div class="form-field">
           <label class="form-label">Nombre del equipo</label>
@@ -30,7 +30,7 @@ $isEdit = isset($equipo);
             <input type="text"
               class="form-control"
               name="nombre"
-              value="<?php echo $isEdit ? htmlspecialchars($equipo->nombre) : ''; ?>"
+              value="<?= htmlspecialchars($equipo->nombre ?? '') ?>"
               placeholder="Ej. Real Madrid"
               required>
           </div>
@@ -44,7 +44,7 @@ $isEdit = isset($equipo);
               <input type="text"
                 class="form-control"
                 name="pais"
-                value="<?php echo $isEdit ? htmlspecialchars($equipo->pais) : ''; ?>"
+                value="<?= htmlspecialchars($equipo->pais ?? '') ?>"
                 placeholder="Ej. España"
                 required>
             </div>
@@ -57,7 +57,7 @@ $isEdit = isset($equipo);
               <input type="text"
                 class="form-control"
                 name="fundacion"
-                value="<?php echo $isEdit ? htmlspecialchars($equipo->fundacion) : ''; ?>"
+                value="<?= htmlspecialchars($equipo->fundacion?? '') ?>"
                 placeholder="Ej. 1902"
                 required>
             </div>
@@ -67,20 +67,20 @@ $isEdit = isset($equipo);
         <div class="form-field">
           <label class="form-label">Imagen / Escudo del club</label>
 
-          <?php if ($isEdit && !empty($equipo->imagen)): ?>
+          <?php if ($isEdit && !empty($equipo->imagen)){  ?>
             <div class="d-flex align-items-center gap-3">
-              <img src="<?php echo htmlspecialchars($equipo->imagen); ?>" alt="Escudo actual"
+              <img src="<?= htmlspecialchars($equipo->imagen ?? '') ?>" alt="Escudo actual"
                 style="width: 56px; height: 56px; object-fit: contain;"
                 class="img-thumbnail bg-light border">
               <span class="form-hint">Escudo actual</span>
             </div>
-          <?php endif; ?>
+          <?php } ?>
 
           <div class="form-file">
             <input type="file"
               class="form-control form-file-input"
               name="imagen"
-              <?php echo $isEdit ? '' : 'required'; ?>>
+              <?php if (!$isEdit) { echo 'required'; } ?>>
             <span class="form-hint">Formatos permitidos: PNG, JPG (se recomienda fondo transparente).</span>
           </div>
         </div>

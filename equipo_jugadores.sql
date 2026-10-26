@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2026 a las 02:45:50
+-- Tiempo de generación: 26-10-2026 a las 17:59:10
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,13 +40,12 @@ CREATE TABLE `equipo` (
 --
 
 INSERT INTO `equipo` (`id_equipo`, `nombre`, `fundacion`, `pais`, `imagen`) VALUES
-(1, 'Club Atletico Boca Juniors', '1905-04-03', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/boca-juniors.009a4e59.png'),
-(2, 'Club Atlético River Plate', '1901-05-25', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/river-plate.1ac01d84.png'),
-(3, 'Club Atlético Independiente', '1905-01-01', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/independiente.fe207eca.png'),
-(4, 'Racing Club', '1903-03-25', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/racing-club.2e7a0fc0.png'),
-(5, 'Club Atlético San Lorenzo de Almagro', '1908-04-01', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/1500x1500/san-lorenzo-de-almagro.a0e4e931.png'),
-(7, 'Club Atletico Estudiantes De La Plata', '1905-08-04', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/700x700/estudiantes-de-la-plata.5e953e40.png'),
-(8, 'lionel', '1905-08-04', 'Argentina', 'imagen/6ad0060c9a3565.79440501.png');
+(1, 'Club Atletico Boca Juniors', '1905-04-03', 'Argentina', 'imagen/6ad79d6dc50d90.11614258.png'),
+(2, 'Club Atlético River Plate', '1901-05-25', 'Argentina', 'imagen/6ad79d84640dd3.78098825.png'),
+(3, 'Club Atlético Independiente', '1905-01-01', 'Argentina', 'imagen/6ad79d93d52c90.87048165.png'),
+(4, 'Racing Club', '1903-03-25', 'Argentina', 'imagen/6ad79da05389d1.91213482.png'),
+(5, 'Club Atlético San Lorenzo de Almagro', '1908-04-01', 'Argentina', 'imagen/6ad79d6567ee15.96427893.png'),
+(7, 'Club Atletico Estudiantes De La Plata', '1905-08-04', 'Argentina', 'https://assets.football-logos.cc/logos/argentina/700x700/estudiantes-de-la-plata.5e953e40.png');
 
 -- --------------------------------------------------------
 
@@ -57,19 +56,19 @@ INSERT INTO `equipo` (`id_equipo`, `nombre`, `fundacion`, `pais`, `imagen`) VALU
 CREATE TABLE `jugador` (
   `id_jugador` int(11) NOT NULL,
   `id_equipo` int(11) NOT NULL,
-  `fecha_nacimieto` date NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellido` varchar(30) NOT NULL,
   `sueldo` int(11) NOT NULL,
   `posicion` varchar(20) NOT NULL,
-  `IMAGEN` varchar(255) NOT NULL
+  `imagen` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `jugador`
 --
 
-INSERT INTO `jugador` (`id_jugador`, `id_equipo`, `fecha_nacimieto`, `nombre`, `apellido`, `sueldo`, `posicion`, `IMAGEN`) VALUES
+INSERT INTO `jugador` (`id_jugador`, `id_equipo`, `fecha_nacimiento`, `nombre`, `apellido`, `sueldo`, `posicion`, `imagen`) VALUES
 (1, 1, '1994-06-29', 'Leandro', 'Paredes', 850000, 'Mediocampista', 'https://bocastats.com/assets/players/leandro-paredes.webp'),
 (2, 1, '1996-02-24', 'Miguel', 'Merentiel', 600000, 'Delantero', 'https://bocastats.com/assets/players/miguel-merentiel.webp'),
 (3, 1, '1996-05-19', 'Sebastián', 'Villa', 500000, 'Delantero', 'https://bocastats.com/assets/players/sebastian-villa.webp'),
@@ -103,7 +102,7 @@ INSERT INTO `jugador` (`id_jugador`, `id_equipo`, `fecha_nacimieto`, `nombre`, `
 (31, 5, '2002-08-28', 'Facundo', 'Farías', 750000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/08-31_1788208335.jpg'),
 (32, 5, '1992-01-17', 'Ezequiel', 'Cerutti', 400000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773566857.jpg'),
 (33, 5, '2000-02-18', 'Alexis', 'Cuello', 550000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773566979.jpg'),
-(34, 5, '1997-10-23', 'Matías', 'Reali', 500000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773567081.jpg');
+(34, 5, '1997-10-23', 'Matías', 'Reali(editado)', 500000, 'Delantero', 'https://sanlorenzo.com.ar/img/plantel/futbol/2026/g/03-15_1773567081.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,7 +122,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `email`, `password`, `role`) VALUES
-(1, 'webadmin', '$2y$10$FMZNMhItak6YkaoyBP/x5e7XQlT5Aeep8MXc4/ylXar5BvCeTVTI.', 'administrador');
+(1, 'webadmin', '$2y$10$l1M40cODW5hfbNgqK/qra.AaabCgT82UDiBqP4jVq1VxZNgzIf88a', 'administrador'),
+(4, 'lionelcorrea43@gmail.com', '$2y$10$zicMxUHDMAAZZavRcFzk/utH1ldMn235JxNlkOUSjPMO1OziNAW9C', 'usuario');
 
 --
 -- Índices para tablas volcadas
@@ -156,19 +156,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `equipo`
 --
 ALTER TABLE `equipo`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `jugador`
 --
 ALTER TABLE `jugador`
-  MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_jugador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -178,7 +178,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `jugador`
 --
 ALTER TABLE `jugador`
-  ADD CONSTRAINT `FK_JUGADOR_EQUIPO` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`);
+  ADD CONSTRAINT `FK_JUGADOR_EQUIPO` FOREIGN KEY (`id_equipo`) REFERENCES `equipo` (`id_equipo`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

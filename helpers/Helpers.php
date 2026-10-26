@@ -15,6 +15,7 @@ class helpers
         }
         return true;
     }
+
     static function estaLogueado()
     {
         if (session_status() != PHP_SESSION_ACTIVE) {
@@ -25,6 +26,7 @@ class helpers
         }
         return false;
     }
+    
     static function existeUsuario()
     {
         if (session_status() != PHP_SESSION_ACTIVE) {
